@@ -14,5 +14,7 @@ public class Main {
         array.addFirst(98);
         System.out.println(array);
 
+        array.set(1, -100);
+        System.out.println(array);
     }
 }

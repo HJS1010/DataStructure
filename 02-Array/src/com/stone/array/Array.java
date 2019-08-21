@@ -88,6 +88,14 @@ public class Array {
         return data[index];
     }
 
+    // 修改 index 索引位置的元素为e
+    public void set(int index, int e) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed. Illegal index.");
+        }
+        data[index] = e;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
