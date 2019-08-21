@@ -70,6 +70,24 @@ public class Array {
         size++;
     }
 
+    // 获取数组的第一个元素
+    public int getFirst() {
+        return get(0);
+    }
+
+    // 获取数组的最后一个元素
+    public int getLast() {
+        return get(size - 1);
+    }
+
+    // 获取 index 索引位置的元素
+    public int get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Get failed. Illegal index.");
+        }
+        return data[index];
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
@@ -85,4 +103,6 @@ public class Array {
         res.append("]");
         return res.toString();
     }
+
+
 }
