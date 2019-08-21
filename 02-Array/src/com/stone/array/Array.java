@@ -37,4 +37,52 @@ public class Array {
     public boolean isEmpty() {
         return size == 0;
     }
+
+    // 向数组所有元素之后添加一个新元素
+    public void addLast(int e) {
+//        if (size == data.length) {
+//            throw new IllegalArgumentException("AddLast failed. Array is full.");
+//        }
+//        data[size] = e;
+//        size++;
+        add(size, e);
+    }
+
+    // 向数组所有元素之前插入一个新元素 e
+    public void addFirst(int e) {
+        add(0, e);
+    }
+
+    // 在 index 索引位置插入一个新元素e
+    public void add(int index, int e) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed. Illegal index.");
+        }
+
+        if (size == data.length) {
+            throw new IllegalArgumentException("Add failed. Array is full.");
+        }
+
+        for (int i = size - 1; i >= index; i--) {
+            data[i + 1] = data[i];
+        }
+        data[index] = e;
+        size++;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        res.append(String.format("Array: size: %d, capacity: %d\n",
+                size, getCapacity()));
+        res.append("[");
+        for (int i = 0; i < size; i++) {
+            res.append(data[i]);
+            if (i != size - 1) {
+                res.append(", ");
+            }
+        }
+        res.append("]");
+        return res.toString();
+    }
 }
