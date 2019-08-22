@@ -29,5 +29,10 @@ public class Main {
         array.removeElement(-100);
         System.out.println(array);
 
+        for (int i = 0; i < 3; i++) {
+            array.removeFirst();
+            System.out.println(array);
+        }
+
     }
 }
