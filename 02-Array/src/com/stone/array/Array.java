@@ -116,6 +116,29 @@ public class Array {
         return -1;
     }
 
+    // 删除数组第一个元素，并返回删除的元素
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    // 删除数组最后一个元素，并返回删除的元素
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
+    // 从数组中删除 index 位置的元素，返回删除的元素
+    public int remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Illegal index.");
+        }
+        int ret = data[index];
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return ret;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();

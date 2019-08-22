@@ -16,5 +16,15 @@ public class Main {
 
         array.set(1, -100);
         System.out.println(array);
+
+        array.removeFirst();
+        System.out.println(array);
+
+        array.removeLast();
+        System.out.println(array);
+
+        array.remove(1);
+        System.out.println(array);
+
     }
 }
