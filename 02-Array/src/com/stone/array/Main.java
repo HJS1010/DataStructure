@@ -26,5 +26,8 @@ public class Main {
         array.remove(1);
         System.out.println(array);
 
+        array.removeElement(-100);
+        System.out.println(array);
+
     }
 }

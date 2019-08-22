@@ -139,6 +139,14 @@ public class Array {
         return ret;
     }
 
+    // 从数组中删除元素e
+    public void removeElement(int e) {
+        int index = find(e);
+        if (index != -1) {
+            remove(index);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
