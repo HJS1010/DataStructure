@@ -96,6 +96,26 @@ public class Array {
         data[index] = e;
     }
 
+    // 查找数组中是否有元素e
+    public boolean contains(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 查找数组中元素e所在的索引，如果不存在元素e，则返回-1
+    public int find(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
