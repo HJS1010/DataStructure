@@ -97,7 +97,7 @@ public class Array<E> {
     }
 
     // 查找数组中是否有元素e
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
             if (data[i].equals(e)) {
                 return true;
