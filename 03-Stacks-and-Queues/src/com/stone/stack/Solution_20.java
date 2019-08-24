@@ -1,39 +1,43 @@
 package com.stone.stack;
 
+import java.util.HashMap;
+
 /**
  * 括号匹配
  */
 public class Solution_20 {
+    private HashMap<Character, Character> map;
 
-    public static boolean isValid(String s) {
+    public Solution_20() {
+        map = new HashMap<>();
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+    }
+
+    public boolean isValid(String s) {
         Stack<Character> stack = new ArrayStack<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if ('(' == c || '[' == c || '{' == c) {
-                stack.push(c);
-            } else {
+            if (map.containsKey(c)) {
                 if (stack.isEmpty()) {
                     return false;
                 }
                 Character topChar = stack.pop();
-                if (')' == c && '(' != topChar) {
+                if (topChar != map.get(c)) {
                     return false;
                 }
-                if (']' == c && '[' != topChar) {
-                    return false;
-                }
-                if ('}' == c && '{' != topChar) {
-                    return false;
-                }
+            } else {
+                stack.push(c);
             }
         }
         return stack.isEmpty();
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution_20.isValid("([{}])"));
-        System.out.println(Solution_20.isValid("()[}"));
-        System.out.println(Solution_20.isValid(""));
-        System.out.println(Solution_20.isValid("}"));
+        System.out.println(new Solution_20().isValid("([{}])"));
+        System.out.println(new Solution_20().isValid("()[}"));
+        System.out.println(new Solution_20().isValid(""));
+        System.out.println(new Solution_20().isValid("}"));
     }
 }
