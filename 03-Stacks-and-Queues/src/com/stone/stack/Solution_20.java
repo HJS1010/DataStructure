@@ -20,10 +20,7 @@ public class Solution_20 {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (map.containsKey(c)) {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                Character topChar = stack.pop();
+                Character topChar = stack.isEmpty() ? '#' : stack.pop();
                 if (topChar != map.get(c)) {
                     return false;
                 }
