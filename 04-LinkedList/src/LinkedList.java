@@ -67,5 +67,62 @@ public class LinkedList<E> {
         size++;
     }
 
+    // 获取链表的第一个元素
+    public E getFirst() {
+        return get(0);
+    }
 
+    // 获取链表的最后一个元素
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    // 获取链表的第 index 位置的元素
+    private E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Get failed. Illegal index.");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    // 修改链表的第 index 位置的元素为e
+    public void set(int index, E e) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed. Illegal index.");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    // 查找链表中是否有元素e
+    public boolean contains(E e) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.e.equals(e)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            res.append(cur.e);
+            res.append("->");
+            cur = cur.next;
+        }
+        res.append("NULL");
+        return res.toString();
+    }
 }
