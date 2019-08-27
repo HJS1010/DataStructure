@@ -113,6 +113,50 @@ public class LinkedList<E> {
         return false;
     }
 
+    // 删除链表第一个元素
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    // 删除链表最后一个元素
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
+    // 删除链表中 index 位置元素，并返回删除元素
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Illegal index.");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        size--;
+
+        return retNode.e;
+    }
+
+    // 从链表中删除元素e
+    public void removeElement(E e) {
+        Node prev = dummyHead;
+        while (prev.next != null) {
+            if (prev.next.e.equals(e)) {
+                break;
+            }
+            prev = prev.next;
+        }
+        if (prev.next != null) {
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next=null;
+            size--;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
