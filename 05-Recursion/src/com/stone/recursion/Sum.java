@@ -1,3 +1,5 @@
+package com.stone.recursion;
+
 public class Sum {
 
     public static int sum(int[] arr) {

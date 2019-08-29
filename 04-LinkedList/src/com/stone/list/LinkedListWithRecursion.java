@@ -1,7 +1,9 @@
+package com.stone.list;
+
 /**
- * 链表
+ * 链表：使用递归实现
  */
-public class LinkedList<E> {
+public class LinkedListWithRecursion<E> {
 
     private class Node {
         private E e;
@@ -29,7 +31,7 @@ public class LinkedList<E> {
     private Node dummyHead;
     private int size;
 
-    public LinkedList() {
+    public LinkedListWithRecursion() {
         dummyHead = new Node();
         size = 0;
     }
@@ -56,15 +58,8 @@ public class LinkedList<E> {
 
     // 在链表的 index(0-based) 位置添加新的元素e
     public void add(int index, E e) {
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Add failed. Illegal index.");
-        }
-        Node prev = dummyHead;
-        for (int i = 0; i < index; i++) {
-            prev = prev.next;
-        }
-        prev.next = new Node(e, prev.next);
-        size++;
+        // TODO: 2019/8/28  
+
     }
 
     // 获取链表的第一个元素
@@ -79,37 +74,19 @@ public class LinkedList<E> {
 
     // 获取链表的第 index 位置的元素
     private E get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Get failed. Illegal index.");
-        }
-        Node cur = dummyHead.next;
-        for (int i = 0; i < index; i++) {
-            cur = cur.next;
-        }
-        return cur.e;
+        // TODO: 2019/8/28  
+        return null;
     }
 
     // 修改链表的第 index 位置的元素为e
     public void set(int index, E e) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Set failed. Illegal index.");
-        }
-        Node cur = dummyHead.next;
-        for (int i = 0; i < index; i++) {
-            cur = cur.next;
-        }
-        cur.e = e;
+        // TODO: 2019/8/28  
+
     }
 
     // 查找链表中是否有元素e
     public boolean contains(E e) {
-        Node cur = dummyHead.next;
-        while (cur != null) {
-            if (cur.e.equals(e)) {
-                return true;
-            }
-            cur = cur.next;
-        }
+
         return false;
     }
 
@@ -125,37 +102,27 @@ public class LinkedList<E> {
 
     // 删除链表中 index 位置元素，并返回删除元素
     public E remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Remove failed. Illegal index.");
-        }
-        Node prev = dummyHead;
-        for (int i = 0; i < index; i++) {
-            prev = prev.next;
-        }
-        Node retNode = prev.next;
-        prev.next = retNode.next;
-        retNode.next = null;
-        size--;
-
-        return retNode.e;
+        // TODO: 2019/8/28  
+        return null;
     }
 
     // 从链表中删除元素e
     public void removeElement(E e) {
-        Node prev = dummyHead;
-        while (prev.next != null) {
-            if (prev.next.e.equals(e)) {
-                break;
-            }
-            prev = prev.next;
+        removeElement(dummyHead, e);
+    }
+
+    private Node removeElement(Node head, E e) {
+        if (head == null) {
+            return null;
         }
-        if (prev.next != null) {
-            Node delNode = prev.next;
-            prev.next = delNode.next;
-            delNode.next=null;
-            size--;
+        head.next = removeElement(head.next, e);
+        if (head.e == e) {
+            return head.next;
+        } else {
+            return head;
         }
     }
+
 
     @Override
     public String toString() {
