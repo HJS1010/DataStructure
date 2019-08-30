@@ -1,5 +1,7 @@
 package com.stone.bst;
 
+import java.util.Stack;
+
 /**
  * Binary Search Tree：二分搜索树
  */
@@ -120,6 +122,25 @@ public class BST<E extends Comparable<E>> {
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    // 前序遍历,非递归实现
+    public void preOrderNR() {
+        if (root == null) {
+            return;
+        }
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
     }
 
     @Override
