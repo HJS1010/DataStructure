@@ -76,4 +76,21 @@ public class BST<E extends Comparable<E>> {
             return contains(node.right, e);
         }
     }
+
+    // 二分搜索树前序遍历
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    // 前序遍历以node为根的二分搜索树，递归算法
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+
 }
