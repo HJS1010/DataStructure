@@ -121,4 +121,38 @@ public class BST<E extends Comparable<E>> {
         postOrder(node.right);
         System.out.println(node.e);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        generateBSTDepthString(root, 0, res);
+        return res.toString();
+    }
+
+    private void generateBSTDepthString(Node node, int depth, StringBuilder res) {
+        if (node == null) {
+            res.append(generateDepthString(depth) + "null\n");
+            return;
+        }
+        res.append(generateDepthString(depth) + node.e + "\n");
+        generateBSTDepthString(node.left, depth + 1, res);
+        generateBSTDepthString(node.right, depth + 1, res);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            res.append("--");
+        }
+        return res.toString();
+    }
+
+    public static void main(String[] args) {
+        BST<Integer> bst = new BST<>();
+        int[] nums = {5, 3, 6, 8, 4, 2};
+        for (int num : nums) {
+            bst.add(num);
+        }
+        System.out.println(bst);
+    }
 }
