@@ -1,5 +1,7 @@
 package com.stone.bst;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -139,6 +141,25 @@ public class BST<E extends Comparable<E>> {
             }
             if (cur.left != null) {
                 stack.push(cur.left);
+            }
+        }
+    }
+
+    // 二分搜索树层序遍历
+    public void levelOrder() {
+        if (root == null) {
+            return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node cur = queue.remove();
+            System.out.println(cur.e);
+            if (cur.left != null) {
+                queue.add(cur.left);
+            }
+            if (cur.right != null) {
+                queue.add(cur.right);
             }
         }
     }
