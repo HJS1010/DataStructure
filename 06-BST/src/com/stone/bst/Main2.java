@@ -1,5 +1,8 @@
 package com.stone.bst;
 
+/**
+ * 测试:层序遍历(非递归)
+ */
 public class Main2 {
 
     public static void main(String[] args) {

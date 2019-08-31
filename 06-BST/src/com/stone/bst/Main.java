@@ -1,5 +1,8 @@
 package com.stone.bst;
 
+/**
+ * 测试:前序遍历\中序遍历\后序遍历\层序遍历(递归方式)
+ */
 public class Main {
 
     public static void main(String[] args) {
