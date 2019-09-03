@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words1 = new ArrayList<>();
-        if (FileOperation.readFile("pride-and-prejudice", words1)) {
+        if (FileOperation.readFile("pride-and-prejudice.txt", words1)) {
             System.out.println("Total words: " + words1.size());
             BSTSet<String> set1 = new BSTSet<>();
             for (String word : words1) {
