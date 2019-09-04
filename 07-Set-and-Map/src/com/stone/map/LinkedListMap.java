@@ -74,12 +74,12 @@ public class LinkedListMap<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void set(K key, V value) {
+    public void set(K key, V newValue) {
         Node node = getNode(key);
         if (node == null) {
             throw new IllegalArgumentException(key + " doesn't exist!");
         }
-        node.value = value;
+        node.value = newValue;
     }
 
     @Override
