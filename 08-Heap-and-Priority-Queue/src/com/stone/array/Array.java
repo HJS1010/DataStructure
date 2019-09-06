@@ -1,5 +1,6 @@
 package com.stone.array;
 
+
 /**
  * 动态数组
  * 数组的容量动态变化的，不是固定的不变的
@@ -21,6 +22,15 @@ public class Array<E> {
     // 无参的构造函数，默认数组的容量：DEFAULT_CAPACITY
     public Array() {
         this(DEFAULT_CAPACITY);
+    }
+
+    public Array(E[] arr) {
+        int length = arr.length;
+        data = (E[]) new Object[length];
+        for (int i = 0; i < length; i++) {
+            data[i] = arr[i];
+        }
+        size = length;
     }
 
     // 获取数组中元素的个数
