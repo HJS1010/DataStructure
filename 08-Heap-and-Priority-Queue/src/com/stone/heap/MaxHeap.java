@@ -12,6 +12,10 @@ public class MaxHeap<E extends Comparable<E>> {
         data = new Array<>(capacity);
     }
 
+    public MaxHeap() {
+        data = new Array<>();
+    }
+
     // 返回堆中的元素个数
     public int size() {
         return data.getSize();
