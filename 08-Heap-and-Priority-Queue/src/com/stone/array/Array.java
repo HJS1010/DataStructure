@@ -50,11 +50,6 @@ public class Array<E> {
 
     // 向数组所有元素之后添加一个新元素
     public void addLast(E e) {
-//        if (size == data.length) {
-//            throw new IllegalArgumentException("AddLast failed. Array is full.");
-//        }
-//        data[size] = e;
-//        size++;
         add(size, e);
     }
 
