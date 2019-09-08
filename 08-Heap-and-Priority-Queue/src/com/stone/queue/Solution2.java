@@ -1,29 +1,16 @@
 package com.stone.queue;
 
-/**
- * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
- * <p>
- * 示例 1:
- * 输入: nums = [1,1,1,2,2,3], k = 2
- * 输出: [1,2]
- * <p>
- * 示例 2:
- * 输入: nums = [1], k = 1
- * 输出: [1]
- * <p>
- * 链接：https://leetcode-cn.com/problems/top-k-frequent-elements
- */
-
-import java.util.*;
 import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * 使用Java PriorityQueue
  * 内部实现是最小堆
+ * 使用Comparator
  */
-public class Solution {
+public class Solution2 {
 
-    private class Freq implements Comparable<Freq> {
+    private class Freq {
         private int e;
         private int freq;
 
@@ -31,16 +18,13 @@ public class Solution {
             this.e = e;
             this.freq = freq;
         }
+    }
+
+    private class FreqComparator implements Comparator<Freq> {
 
         @Override
-        public int compareTo(Freq another) {
-            if (this.freq < another.freq) {
-                return -1;
-            } else if (this.freq > another.freq) {
-                return 1;
-            } else {
-                return 0;
-            }
+        public int compare(Freq a, Freq b) {
+            return a.freq - b.freq;
         }
     }
 
@@ -53,7 +37,7 @@ public class Solution {
                 map.put(num, 1);
             }
         }
-        PriorityQueue<Freq> pq = new PriorityQueue<>();
+        PriorityQueue<Freq> pq = new PriorityQueue<>(new FreqComparator());
         for (int key : map.keySet()) {
             if (pq.size() < k) {
                 pq.add(new Freq(key, map.get(key)));
@@ -73,11 +57,11 @@ public class Solution {
 
         int[] nums = {1, 1, 1, 2, 2, 3};
         int k = 2;
-        System.out.println(((new Solution()).topKFrequent(nums, k)));
+        System.out.println(((new Solution2()).topKFrequent(nums, k)));
 
         int[] nums1 = {1, 1};
         int k1 = 1;
-        System.out.println(((new Solution()).topKFrequent(nums1, k1)));
+        System.out.println(((new Solution2()).topKFrequent(nums1, k1)));
 
     }
 }
