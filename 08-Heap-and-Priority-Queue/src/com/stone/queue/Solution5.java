@@ -19,7 +19,7 @@ public class Solution5 {
             }
         }
         PriorityQueue<Integer> pq = new PriorityQueue<>(
-                (a, b) -> map.get(a) - map.get(b));
+                Comparator.comparingInt(map::get));
 
         for (int key : map.keySet()) {
             if (pq.size() < k) {
